@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name" translatable="false">PokedexProject</string>
+    <string name="team">Team</string>
+    <string name="bag">Bag</string>
+    <string name="abilities">Abilities</string>
+    <string name="berries">Berries</string>
+    <string name="items">Items</string>
+    <string name="moves">Moves</string>
+    <string name="pokemons">Pokemons</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

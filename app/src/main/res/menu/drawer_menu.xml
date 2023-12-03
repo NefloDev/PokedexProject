@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/abilityRecyclerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/abilitiesicon"
+        android:title="@string/abilities" />
+    <item
+        android:id="@+id/berryRecyclerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/berryicon"
+        android:title="@string/berries" />
+    <item
+        android:id="@+id/itemRecyclerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/pokemonicon"
+        android:title="@string/items" />
+    <item
+        android:id="@+id/moveRecyclerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/movementsicon"
+        android:title="@string/moves" />
+    <item
+        android:id="@+id/pokemonRecyclerFragment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:icon="@drawable/pokedexicon"
+        android:title="@string/pokemons" />
+</menu>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/pokemonRecyclerFragment">
+
+    <fragment
+        android:id="@+id/pokemonRecyclerFragment"
+        android:name="com.example.pokedexproject.fragments.PokemonRecyclerFragment"
+        android:label="fragment_pokemon_recycler"
+        tools:layout="@layout/fragment_pokemon_recycler" />
+    <fragment
+        android:id="@+id/itemRecyclerFragment"
+        android:name="com.example.pokedexproject.fragments.ItemRecyclerFragment"
+        android:label="fragment_item_recycler"
+        tools:layout="@layout/fragment_item_recycler" />
+    <fragment
+        android:id="@+id/abilityRecyclerFragment"
+        android:name="com.example.pokedexproject.fragments.AbilityRecyclerFragment"
+        android:label="fragment_ability_recycler"
+        tools:layout="@layout/fragment_ability_recycler" />
+    <fragment
+        android:id="@+id/berryRecyclerFragment"
+        android:name="com.example.pokedexproject.fragments.BerryRecyclerFragment"
+        android:label="fragment_berry_recycler"
+        tools:layout="@layout/fragment_berry_recycler" />
+    <fragment
+        android:id="@+id/moveRecyclerFragment"
+        android:name="com.example.pokedexproject.fragments.MoveRecyclerFragment"
+        android:label="fragment_move_recycler"
+        tools:layout="@layout/fragment_move_recycler" />
+    <fragment
+        android:id="@+id/bagFragment"
+        android:name="com.example.pokedexproject.fragments.BagFragment"
+        android:label="fragment_bag"
+        tools:layout="@layout/fragment_bag" >
+    </fragment>
+    <fragment
+        android:id="@+id/teamFragment"
+        android:name="com.example.pokedexproject.fragments.TeamFragment"
+        android:label="fragment_team"
+        tools:layout="@layout/fragment_team" />
+</navigation>
