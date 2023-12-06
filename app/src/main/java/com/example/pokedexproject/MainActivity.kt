@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupWithNavController(binding.bottomNavView, navController)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
 
-        binding.floatingActionButton.setOnClickListener{binding.drawerLayout.openDrawer(GravityCompat.START)}
+        binding.menuButton.setOnClickListener{binding.drawerLayout.openDrawer(GravityCompat.START)}
     }
 
 }
