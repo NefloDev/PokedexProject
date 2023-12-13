@@ -124,6 +124,10 @@ class PokemonRecyclerFragment : Fragment() {
                 ) else it.toString()
             }
 
+            holder.itemView.setOnClickListener{//navigate
+
+            }
+
         }
     }
 }

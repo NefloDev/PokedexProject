@@ -20,6 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class PokemonViewModel(application: Application) : AndroidViewModel(application) {
     private val listManager = PokemonList()
     val pokemonMutableLiveData = MutableLiveData<ArrayList<Pokemon>>()
+    val selectedPokemon = MutableLiveData<Pokemon>()
     private lateinit var pokemonList : List<String>
     private var apiClient = Retrofit.Builder()
         .baseUrl("https://pokeapi.co/api/v2/")
@@ -76,11 +77,11 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
         initalize()
     }
 
-    /*fun select(Pokemon element){
-        selectedPokemon.setValue(element);
-    }*/
-//    fun selected() : MutableLiveData<Pokemon>{
-//        return selectedPokemon;
-//    }
+    fun select(element : Pokemon){
+        selectedPokemon.value = element;
+    }
+    fun selected() : MutableLiveData<Pokemon>{
+        return selectedPokemon;
+    }
 
 }

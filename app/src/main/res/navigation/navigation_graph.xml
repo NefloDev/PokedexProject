@@ -9,7 +9,11 @@
         android:id="@+id/pokemonRecyclerFragment"
         android:name="com.example.pokedexproject.fragments.PokemonRecyclerFragment"
         android:label="fragment_pokemon_recycler"
-        tools:layout="@layout/fragment_pokemon_recycler" />
+        tools:layout="@layout/fragment_pokemon_recycler" >
+        <action
+            android:id="@+id/action_pokemonRecyclerFragment_to_pokemonDetailFragment"
+            app:destination="@id/pokemonDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemRecyclerFragment"
         android:name="com.example.pokedexproject.fragments.ItemRecyclerFragment"
@@ -41,4 +45,9 @@
         android:name="com.example.pokedexproject.fragments.TeamFragment"
         android:label="fragment_team"
         tools:layout="@layout/fragment_team" />
+    <fragment
+        android:id="@+id/pokemonDetailFragment"
+        android:name="com.example.pokedexproject.PokemonDetailFragment"
+        android:label="fragment_pokemon_detail"
+        tools:layout="@layout/fragment_pokemon_detail" />
 </navigation>

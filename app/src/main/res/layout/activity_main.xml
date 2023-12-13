@@ -22,25 +22,6 @@
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/navigation_graph" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_nav_view"
-            android:layout_width="0dp"
-            android:layout_height="60dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/custom_bottom_app_bar"
-            app:itemActiveIndicatorStyle="@android:color/transparent"
-            app:itemIconTint="@color/custom_bottom_app_color"
-            app:itemRippleColor="@color/header_bg"
-            app:itemTextColor="@color/custom_bottom_app_color"
-            app:labelVisibilityMode="unlabeled"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:menu="@menu/bottom_menu">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
         <Button
             android:id="@+id/menuButton"
             android:layout_width="90dp"

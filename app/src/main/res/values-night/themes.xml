@@ -3,7 +3,7 @@
     <style name="Base.Theme.PokedexProject" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="bottom_nav_bg">@color/dark_gray</item>
+        <item name="card_bg">@color/light_gray</item>
         <item name="colorPrimary">@color/primary_dark</item>
     </style>
 </resources>

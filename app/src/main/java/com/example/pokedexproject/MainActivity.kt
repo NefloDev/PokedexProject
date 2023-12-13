@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
         navController =
             (supportFragmentManager.findFragmentById(binding.fragmentContainer.id) as NavHostFragment).navController
 
-        NavigationUI.setupWithNavController(binding.bottomNavView, navController)
         NavigationUI.setupWithNavController(binding.navigationView, navController)
 
         binding.menuButton.setOnClickListener{binding.drawerLayout.openDrawer(GravityCompat.START)}
