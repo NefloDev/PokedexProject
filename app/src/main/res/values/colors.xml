@@ -6,6 +6,36 @@
     <color name="primary_dark">#965622</color>
     <color name="header_bg">#FFFFB74D</color>
     <color name="primary_orange">#FF956216</color>
-    <color name="light_gray">#9C9C9C</color>
-    <color name="dark_gray">#4E4E4E</color>
+    <color name="gray">#252525</color>
+
+<!--    Pokemon Type Colors     -->
+
+    <color name="bug_type">#A0A028</color>
+    <color name="dark_type">#4F4747</color>
+    <color name="dragon_type">#576FBD</color>
+    <color name="electric_type">#E1C031</color>
+    <color name="fairy_type">#E28DE2</color>
+    <color name="fighting_type">#E59121</color>
+    <color name="fire_type">#E53E3E</color>
+    <color name="flying_type">#74ABD1</color>
+    <color name="ghost_type">#6F4570</color>
+    <color name="grass_type">#439937</color>
+    <color name="ground_type">#A5733C</color>
+    <color name="ice_type">#47C9C9</color>
+    <color name="normal_type">#828282</color>
+    <color name="poison_type">#9454CC</color>
+    <color name="psychic_type">#EA6C8D</color>
+    <color name="rock_type">#AAA581</color>
+    <color name="shadow_type">#000000</color>
+    <color name="steel_type">#6BADC9</color>
+    <color name="unknown_type">#68A090</color>
+    <color name="water_type">#306EE2</color>
+
+<!--    Pokemon Stats Colors-->
+
+    <color name="hp_color">#EF5350</color>
+    <color name="atk_color">#FFA726</color>
+    <color name="def_color">#42A5F5</color>
+    <color name="spd_color">#26C6DA</color>
+    <color name="exp_color">#26A69A</color>
 </resources>

@@ -47,7 +47,7 @@
         tools:layout="@layout/fragment_team" />
     <fragment
         android:id="@+id/pokemonDetailFragment"
-        android:name="com.example.pokedexproject.PokemonDetailFragment"
+        android:name="com.example.pokedexproject.fragments.PokemonDetailFragment"
         android:label="fragment_pokemon_detail"
         tools:layout="@layout/fragment_pokemon_detail" />
 </navigation>

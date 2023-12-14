@@ -1,6 +1,4 @@
-package com.example.pokedexproject.entities
-
-import Pokemon
+package com.example.pokedexproject.entities.pokemon
 
 class PokemonList {
 

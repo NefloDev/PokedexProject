@@ -1,4 +1,4 @@
-package com.example.pokedexproject.entities
+package com.example.pokedexproject.entities.pokemon
 
 data class PokeList(
     val count : Int,

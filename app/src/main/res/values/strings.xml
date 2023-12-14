@@ -7,6 +7,42 @@
     <string name="items">Items</string>
     <string name="moves">Moves</string>
     <string name="pokemon" translatable="false">Pokémon</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- Types -->
+    <string name="bug">bug</string>
+    <string name="dark">dark</string>
+    <string name="dragon">dragon</string>
+    <string name="electric">electric</string>
+    <string name="fairy">fairy</string>
+    <string name="fighting">fighting</string>
+    <string name="fire">fire</string>
+    <string name="flying">flying</string>
+    <string name="ghost">ghost</string>
+    <string name="grass">grass</string>
+    <string name="ground">ground</string>
+    <string name="ice">ice</string>
+    <string name="normal">normal</string>
+    <string name="poison">poison</string>
+    <string name="psychic">psychic</string>
+    <string name="rock">rock</string>
+    <string name="shadow">shadow</string>
+    <string name="steel">steel</string>
+    <string name="unknown">unknown</string>
+    <string name="water">water</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
+    <string name="hp" translatable="false">hp</string>
+    <string name="atk" translatable="false">attack</string>
+    <string name="def" translatable="false">defense</string>
+    <string name="spatk" translatable="false">special-attack</string>
+    <string name="spdef" translatable="false">special-def</string>
+    <string name="speed" translatable="false">speed</string>
+    <string name="acc" translatable="false">accuracy</string>
+    <string name="ev" translatable="false">evasion</string>
+    <string name="exp" translatable="false">experience</string>
+    <string name="hp_abbreviation" translatable="false">hp</string>
+    <string name="atk_abbreviation" translatable="false">atk</string>
+    <string name="def_abbreviation" translatable="false">def</string>
+    <string name="speed_abbreviation" translatable="false">spd</string>
+    <string name="exp_abbreviation" translatable="false">exp</string>
+    <string name="base_stats">Base Stats</string>
 </resources>

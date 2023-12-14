@@ -1,19 +1,13 @@
-package com.example.pokedexproject.entities
+package com.example.pokedexproject.entities.pokemon
 
-import Pokemon
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -36,7 +30,7 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
             .build().create(PokeApiClient::class.java)
         finished = false
         i = 1
-        listManager.reset(object : PokemonList.Callback{
+        listManager.reset(object : PokemonList.Callback {
             override fun whenFinished(pokemon: ArrayList<Pokemon>) {
                 pokemonMutableLiveData.value!!.clear()
             }
@@ -54,7 +48,7 @@ class PokemonViewModel(application: Application) : AndroidViewModel(application)
                 while(i <= countResponse.body()!!.count && !finished){
                     val response = apiClient.getPokemon(i).execute()
                     if (response.isSuccessful && response.body() != null){
-                        listManager.insert(response.body()!!, object : PokemonList.Callback{
+                        listManager.insert(response.body()!!, object : PokemonList.Callback {
                             override fun whenFinished(pokemon: ArrayList<Pokemon>) {
                                 pokemonMutableLiveData.postValue(pokemon)
                             }

@@ -7,4 +7,27 @@
     <string name="items">Objetos</string>
     <string name="moves">Movimientos</string>
     <string name="bag">Mochila</string>
+    <string name="bug">bicho</string>
+    <string name="dark">oscuro</string>
+    <string name="dragon">dragón</string>
+    <string name="electric">eléctrico</string>
+    <string name="fairy">hada</string>
+    <string name="fighting">lucha</string>
+    <string name="fire">fuego</string>
+    <string name="flying">volador</string>
+    <string name="ghost">fantasma</string>
+    <string name="grass">planta</string>
+    <string name="ground">tierra</string>
+    <string name="ice">hielo</string>
+    <string name="normal">normal</string>
+    <string name="poison">veneno</string>
+    <string name="psychic">psíquico</string>
+    <string name="rock">roca</string>
+    <string name="shadow">sombra</string>
+    <string name="steel">acero</string>
+    <string name="unknown">desconocido</string>
+    <string name="water">agua</string>
+    <string name="height">Altura</string>
+    <string name="weight">Peso</string>
+    <string name="base_stats">Estadísticas Base</string>
 </resources>

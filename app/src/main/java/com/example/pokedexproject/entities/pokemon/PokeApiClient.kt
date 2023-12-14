@@ -1,10 +1,8 @@
-package com.example.pokedexproject.entities
+package com.example.pokedexproject.entities.pokemon
 
-import Pokemon
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
 
 interface PokeApiClient {
     @GET("pokemon/{id}")

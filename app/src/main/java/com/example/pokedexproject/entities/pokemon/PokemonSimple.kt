@@ -1,4 +1,4 @@
-package com.example.pokedexproject.entities
+package com.example.pokedexproject.entities.pokemon
 
 data class PokemonSimple(
     val name : String,
