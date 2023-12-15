@@ -11,6 +11,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -28,6 +30,7 @@ import java.util.Locale
 
 class PokemonDetailFragment : Fragment() {
     private lateinit var binding : FragmentPokemonDetailBinding
+    private lateinit var navController : NavController
     private lateinit var viewModel: PokemonViewModel
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -37,16 +40,22 @@ class PokemonDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        navController = Navigation.findNavController(view)
         viewModel = ViewModelProvider(requireActivity())[PokemonViewModel::class.java]
         var adapter : PokemonTypeLabelAdapter
+
+        binding.backButton.setOnClickListener{
+            navController.popBackStack()
+        }
 
         viewModel.selected().observe(viewLifecycleOwner
         ) { value ->
 
-            binding.detailName.text = value.name.replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
-            }
+            //Setting of values for each view that needs a value when the selected mutablelivedata changes
+
+            var name = value.name.replaceFirstChar {it.uppercase() }
+            name = name.replace("-", " ")
+            binding.detailName.text = name
 
             binding.detailId.text = "#${"%04d".format(value.id)}"
 
@@ -103,6 +112,8 @@ class PokemonDetailFragment : Fragment() {
                 override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?,
                                           isFirstResource: Boolean): Boolean {
                     binding.loadingImage.visibility = View.GONE
+                    binding.pokemonDetailImage.setImageDrawable(
+                        requireActivity().getDrawable(R.drawable.warning))
                     return false
                 }
 
@@ -132,67 +143,31 @@ class PokemonDetailFragment : Fragment() {
         override fun onBindViewHolder(holder: PokemonTypeLabelViewHolder, position: Int) {
             var text = 0
             var color = 0
+            //Depending on the name of the type it sets a text an a color specific for ech
+            //Note* - This list has to be updated manually if more types are added to the Api
+            //also the values of the resources (colors and names)
             when (typeList[position]){
-                resources.getString(R.string.bug) -> {text = R.string.bug;color = R.color.bug_type
-                }
-                resources.getString(R.string.dark) -> {text = R.string.dark;color =
-                    R.color.dark_type
-                }
-                resources.getString(R.string.dragon) -> {text = R.string.dragon;color =
-                    R.color.dragon_type
-                }
-                resources.getString(R.string.electric) -> {text = R.string.electric;color =
-                    R.color.electric_type
-                }
-                resources.getString(R.string.fairy) -> {text = R.string.fairy;color =
-                    R.color.fairy_type
-                }
-                resources.getString(R.string.fighting) -> {text = R.string.fighting;color =
-                    R.color.fighting_type
-                }
-                resources.getString(R.string.fire) -> {text = R.string.fire;color =
-                    R.color.fire_type
-                }
-                resources.getString(R.string.flying) -> {text = R.string.flying;color =
-                    R.color.flying_type
-                }
-                resources.getString(R.string.ghost) -> {text = R.string.ghost;color =
-                    R.color.ghost_type
-                }
-                resources.getString(R.string.grass) -> {text = R.string.grass;color =
-                    R.color.grass_type
-                }
-                resources.getString(R.string.ground) -> {text = R.string.ground;color =
-                    R.color.ground_type
-                }
-                resources.getString(R.string.ice) -> {text = R.string.ice;color = R.color.ice_type
-                }
-                resources.getString(R.string.normal) -> {text = R.string.normal;color =
-                    R.color.normal_type
-                }
-                resources.getString(R.string.poison) -> {text = R.string.poison;color =
-                    R.color.poison_type
-                }
-                resources.getString(R.string.psychic) -> {text = R.string.psychic;color =
-                    R.color.psychic_type
-                }
-                resources.getString(R.string.rock) -> {text = R.string.rock;color =
-                    R.color.rock_type
-                }
-                resources.getString(R.string.shadow) -> {text = R.string.shadow;color =
-                    R.color.shadow_type
-                }
-                resources.getString(R.string.steel) -> {text = R.string.steel;color =
-                    R.color.steel_type
-                }
-                resources.getString(R.string.unknown) -> {text = R.string.unknown;color =
-                    R.color.unknown_type
-                }
-                resources.getString(R.string.water) -> {text = R.string.water;color =
-                    R.color.water_type
-                }
-                else -> {text = R.string.unknown;color = R.color.unknown_type
-                }
+                resources.getString(R.string.bug) -> {text = R.string.bug;color = R.color.bug_type }
+                resources.getString(R.string.dark) -> {text = R.string.dark;color = R.color.dark_type }
+                resources.getString(R.string.dragon) -> {text = R.string.dragon;color = R.color.dragon_type }
+                resources.getString(R.string.electric) -> {text = R.string.electric;color = R.color.electric_type }
+                resources.getString(R.string.fairy) -> {text = R.string.fairy;color = R.color.fairy_type }
+                resources.getString(R.string.fighting) -> {text = R.string.fighting;color = R.color.fighting_type }
+                resources.getString(R.string.fire) -> {text = R.string.fire;color = R.color.fire_type }
+                resources.getString(R.string.flying) -> {text = R.string.flying;color = R.color.flying_type }
+                resources.getString(R.string.ghost) -> {text = R.string.ghost;color = R.color.ghost_type }
+                resources.getString(R.string.grass) -> {text = R.string.grass;color = R.color.grass_type }
+                resources.getString(R.string.ground) -> {text = R.string.ground;color = R.color.ground_type }
+                resources.getString(R.string.ice) -> {text = R.string.ice;color = R.color.ice_type }
+                resources.getString(R.string.normal) -> {text = R.string.normal;color = R.color.normal_type }
+                resources.getString(R.string.poison) -> {text = R.string.poison;color = R.color.poison_type }
+                resources.getString(R.string.psychic) -> {text = R.string.psychic;color = R.color.psychic_type }
+                resources.getString(R.string.rock) -> {text = R.string.rock;color = R.color.rock_type }
+                resources.getString(R.string.shadow) -> {text = R.string.shadow;color = R.color.shadow_type }
+                resources.getString(R.string.steel) -> {text = R.string.steel;color = R.color.steel_type }
+                resources.getString(R.string.unknown) -> {text = R.string.unknown;color = R.color.unknown_type }
+                resources.getString(R.string.water) -> {text = R.string.water;color = R.color.water_type }
+                else -> {text = R.string.unknown;color = R.color.unknown_type }
             }
 
             holder.binding.typeText.text = resources.getString(text)

@@ -15,11 +15,14 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Setting up a navigation controller for the drawer
         navController =
             (supportFragmentManager.findFragmentById(binding.fragmentContainer.id) as NavHostFragment).navController
 
+        //Establishing the navigation controller to the drawer view
         NavigationUI.setupWithNavController(binding.navigationView, navController)
 
+        //Setting the onclick listener to the drawer button to open the drawer
         binding.drawerButton.setOnClickListener{binding.drawerLayout.openDrawer(GravityCompat.START)}
 
     }

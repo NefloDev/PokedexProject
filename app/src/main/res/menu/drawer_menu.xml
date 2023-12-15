@@ -5,18 +5,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <item
-            android:id="@+id/abilityRecyclerFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/abilitiesicon"
-            android:title="@string/abilities" />
-        <item
-            android:id="@+id/berryRecyclerFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/berryicon"
-            android:title="@string/berries" />
-        <item
             android:id="@+id/itemRecyclerFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

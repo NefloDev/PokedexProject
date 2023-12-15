@@ -30,6 +30,7 @@ import com.example.pokedexproject.databinding.CardPokemonBinding
 import com.example.pokedexproject.databinding.FragmentPokemonRecyclerBinding
 import com.example.pokedexproject.entities.common.DataSimple
 import com.example.pokedexproject.entities.pokemon.PokemonViewModel
+import java.lang.StringBuilder
 import java.util.Locale
 
 class PokemonRecyclerFragment : Fragment() {
@@ -39,7 +40,6 @@ class PokemonRecyclerFragment : Fragment() {
     private lateinit var navController: NavController
     private val spritesUrl =
         "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork"
-    private var bgColor : Int? = null
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         binding = FragmentPokemonRecyclerBinding.inflate(inflater, container, false)
@@ -107,14 +107,17 @@ class PokemonRecyclerFragment : Fragment() {
             val p = pokemonList[position]
             val urlminus = p.url.substring(0, p.url.length-1)
             val image = "$spritesUrl${urlminus.substring(urlminus.lastIndexOf("/"))}.png"
+            var name = p.name.replaceFirstChar {it.uppercase() }
+            name = name.replace("-", " ")
 
             setImage(holder, image)
             setColor(image, holder)
 
-            holder.cardBinding.pokemonName.text = p.name.replaceFirstChar {
-                if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
-            }
+            holder.cardBinding.pokemonName.text = name
 
+            //When the itemView is clicked, it selects a pokemon by its name
+            //then navigates to the Pokemon Detail Fragment
+            //and then it resets the state of the Searching bar
             holder.itemView.setOnClickListener{
                 viewModel.select(p.name)
                 navController.navigate(R.id.action_pokemonRecyclerFragment_to_pokemonDetailFragment)
@@ -127,11 +130,16 @@ class PokemonRecyclerFragment : Fragment() {
         private fun setImage(holder : PokemonCardViewHolder, image : String){
             val progressBar = holder.cardBinding.progressBar.progressDrawable
 
+            //Loads the pokemon's sprite into the "pokemonImage" element using Glide
+            //while it is loading, it will show the progress bar until is loaded or it fails
+            //if it fails, it will show a warning image
             Glide.with(requireActivity()).load(image).placeholder(progressBar)
                 .listener(object : RequestListener<Drawable>{
                     override fun onLoadFailed(e: GlideException?, model: Any?, target: Target<Drawable>?,
                                               isFirstResource: Boolean): Boolean {
                         setVisibility()
+                        holder.cardBinding.pokemonImage.setImageDrawable(
+                            requireActivity().getDrawable(R.drawable.warning))
                         return false
                     }
                     override fun onResourceReady(resource: Drawable?, model: Any?, target: Target<Drawable>?,
@@ -147,6 +155,9 @@ class PokemonRecyclerFragment : Fragment() {
         }
 
         private fun setColor(image : String, holder : PokemonCardViewHolder){
+            //Loads the pokemon's sprite as a bitmap into a CustomTarget of Bitmap type element using Glide
+            //this object is an Interface that will set a gradient with the dominant color
+            //extracted by "Palette" to a White color
             Glide.with(requireActivity()).asBitmap().load(image)
                 .into(object : CustomTarget<Bitmap?>() {
                     override fun onResourceReady(
@@ -163,18 +174,18 @@ class PokemonRecyclerFragment : Fragment() {
         }
 
         override fun getFilter(): Filter {
-            return filter
+            return pokemonFilter
         }
 
-        private var filter = object : Filter(){
+        private var pokemonFilter = object : Filter(){
 
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                var filteredList : List<DataSimple>
-                if(constraint.isNullOrBlank()){
-                    filteredList = pokemonListFull
+                //Filters the list if the input is not null
+                val filteredList : List<DataSimple> = if(constraint.isNullOrBlank()){
+                    pokemonListFull
                 }else{
                     val filterPattern = constraint.toString().lowercase().trim()
-                    filteredList = pokemonListFull.filter { p -> p.name.contains(filterPattern) }
+                    pokemonListFull.filter { p -> p.name.contains(filterPattern) }
                 }
                 val results = FilterResults()
                 results.values = filteredList

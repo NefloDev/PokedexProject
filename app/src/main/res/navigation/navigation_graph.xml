@@ -18,20 +18,19 @@
         android:id="@+id/itemRecyclerFragment"
         android:name="com.example.pokedexproject.fragments.ItemRecyclerFragment"
         android:label="fragment_item_recycler"
-        tools:layout="@layout/fragment_item_recycler" />
-    <fragment
-        android:id="@+id/abilityRecyclerFragment"
-        android:name="com.example.pokedexproject.fragments.AbilityRecyclerFragment"
-        android:label="fragment_ability_recycler"
-        tools:layout="@layout/fragment_ability_recycler" />
-    <fragment
-        android:id="@+id/berryRecyclerFragment"
-        android:name="com.example.pokedexproject.fragments.BerryRecyclerFragment"
-        android:label="fragment_berry_recycler"
-        tools:layout="@layout/fragment_berry_recycler" />
+        tools:layout="@layout/fragment_item_recycler" >
+        <action
+            android:id="@+id/action_itemRecyclerFragment_to_itemDetailFragment"
+            app:destination="@id/itemDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pokemonDetailFragment"
         android:name="com.example.pokedexproject.fragments.PokemonDetailFragment"
         android:label="fragment_pokemon_detail"
         tools:layout="@layout/fragment_pokemon_detail" />
+    <fragment
+        android:id="@+id/itemDetailFragment"
+        android:name="com.example.pokedexproject.fragments.ItemDetailFragment"
+        android:label="fragment_item_detail"
+        tools:layout="@layout/fragment_item_detail" />
 </navigation>

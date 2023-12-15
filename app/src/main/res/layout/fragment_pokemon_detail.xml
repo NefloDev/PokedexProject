@@ -1,335 +1,355 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bg_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.PokemonDetailFragment">
+    android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/card_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/custom_layout_pokemon_detail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/card_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/custom_layout_pokemon_detail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/detailId"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_id_detail"
-            android:backgroundTint="#35000000"
-            android:paddingHorizontal="15dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="15dp"
-            android:text="#001"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/detailId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/custom_id_detail"
+                    android:backgroundTint="#35000000"
+                    android:paddingHorizontal="15dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="15dp"
+                    android:text="#001"
+                    android:textColor="@color/white"
+                    android:textSize="28sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ProgressBar
-            android:id="@+id/loadingImage"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <ProgressBar
+                    android:id="@+id/loadingImage"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/pokemonDetailImage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:adjustViewBounds="true"
-            android:maxHeight="200dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                <ImageView
+                    android:id="@+id/pokemonDetailImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="200dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <TextView
-        android:id="@+id/detailName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Name"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pokemonTypeRecycler" />
+            <Button
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-18dp"
+                android:layout_marginTop="16dp"
+                android:background="@null"
+                android:backgroundTint="#35000000"
+                android:contentDescription="Back Button"
+                android:drawableEnd="@drawable/backicon"
+                android:drawableTint="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pokemonTypeRecycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:orientation="horizontal"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_layout" />
+            <TextView
+                android:id="@+id/detailName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Name"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pokemonTypeRecycler" />
 
-    <TextView
-        android:id="@+id/weightTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/weight"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/weightValue"
-        app:layout_constraintStart_toStartOf="@+id/weightValue"
-        app:layout_constraintTop_toTopOf="@+id/heightTitle" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pokemonTypeRecycler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/card_layout" />
 
-    <TextView
-        android:id="@+id/heightTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/height"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/heightValue"
-        app:layout_constraintStart_toStartOf="@+id/heightValue"
-        app:layout_constraintTop_toBottomOf="@+id/heightValue" />
+            <TextView
+                android:id="@+id/weightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/weight"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/weightValue"
+                app:layout_constraintStart_toStartOf="@+id/weightValue"
+                app:layout_constraintTop_toTopOf="@+id/heightTitle" />
 
-    <TextView
-        android:id="@+id/weightValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/heightValue"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/heightValue" />
+            <TextView
+                android:id="@+id/heightTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/height"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/heightValue"
+                app:layout_constraintStart_toStartOf="@+id/heightValue"
+                app:layout_constraintTop_toBottomOf="@+id/heightValue" />
 
-    <TextView
-        android:id="@+id/heightValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/weightValue"
-        app:layout_constraintTop_toBottomOf="@+id/detailName" />
+            <TextView
+                android:id="@+id/weightValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/heightValue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/heightValue" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/hpIndicator"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:max="255"
-        app:indicatorColor="@color/hp_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/hpTitle"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:trackCornerRadius="20dp"
-        app:trackThickness="20dp" />
+            <TextView
+                android:id="@+id/heightValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="TextView"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/weightValue"
+                app:layout_constraintTop_toBottomOf="@+id/detailName" />
 
-    <TextView
-        android:id="@+id/hpValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="90/255"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/hpIndicator"
-        app:layout_constraintEnd_toEndOf="@+id/hpIndicator"
-        app:layout_constraintStart_toStartOf="@+id/hpIndicator"
-        app:layout_constraintTop_toTopOf="@+id/hpIndicator" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/hpIndicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:max="255"
+                app:indicatorColor="@color/hp_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/hpTitle"
+                app:layout_constraintTop_toBottomOf="@+id/baseStatsText"
+                app:trackCornerRadius="20dp"
+                app:trackThickness="20dp" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/atkIndicator"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:max="255"
-        app:indicatorColor="@color/atk_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/hpIndicator"
-        app:layout_constraintTop_toBottomOf="@+id/hpIndicator"
-        app:trackCornerRadius="20dp"
-        app:trackThickness="20dp" />
+            <TextView
+                android:id="@+id/hpValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90/255"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/hpIndicator"
+                app:layout_constraintEnd_toEndOf="@+id/hpIndicator"
+                app:layout_constraintStart_toStartOf="@+id/hpIndicator"
+                app:layout_constraintTop_toTopOf="@+id/hpIndicator" />
 
-    <TextView
-        android:id="@+id/atkValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="90/255"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/atkIndicator"
-        app:layout_constraintEnd_toEndOf="@+id/atkIndicator"
-        app:layout_constraintStart_toStartOf="@+id/atkIndicator"
-        app:layout_constraintTop_toTopOf="@+id/atkIndicator" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/atkIndicator"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:max="255"
+                app:indicatorColor="@color/atk_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/hpIndicator"
+                app:layout_constraintTop_toBottomOf="@+id/hpIndicator"
+                app:trackCornerRadius="20dp"
+                app:trackThickness="20dp" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/defIndicator"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:max="255"
-        app:indicatorColor="@color/def_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/atkIndicator"
-        app:layout_constraintTop_toBottomOf="@+id/atkIndicator"
-        app:trackCornerRadius="20dp"
-        app:trackThickness="20dp" />
+            <TextView
+                android:id="@+id/atkValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90/255"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/atkIndicator"
+                app:layout_constraintEnd_toEndOf="@+id/atkIndicator"
+                app:layout_constraintStart_toStartOf="@+id/atkIndicator"
+                app:layout_constraintTop_toTopOf="@+id/atkIndicator" />
 
-    <TextView
-        android:id="@+id/defValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="90/255"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/defIndicator"
-        app:layout_constraintEnd_toEndOf="@+id/defIndicator"
-        app:layout_constraintStart_toStartOf="@+id/defIndicator"
-        app:layout_constraintTop_toTopOf="@+id/defIndicator" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/defIndicator"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:max="255"
+                app:indicatorColor="@color/def_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/atkIndicator"
+                app:layout_constraintTop_toBottomOf="@+id/atkIndicator"
+                app:trackCornerRadius="20dp"
+                app:trackThickness="20dp" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/spdIndicator"
-        android:layout_width="0dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:max="255"
-        app:indicatorColor="@color/spd_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/defIndicator"
-        app:layout_constraintTop_toBottomOf="@+id/defIndicator"
-        app:trackCornerRadius="20dp"
-        app:trackThickness="20dp" />
+            <TextView
+                android:id="@+id/defValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90/255"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/defIndicator"
+                app:layout_constraintEnd_toEndOf="@+id/defIndicator"
+                app:layout_constraintStart_toStartOf="@+id/defIndicator"
+                app:layout_constraintTop_toTopOf="@+id/defIndicator" />
 
-    <TextView
-        android:id="@+id/spdValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="90/255"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/spdIndicator"
-        app:layout_constraintEnd_toEndOf="@+id/spdIndicator"
-        app:layout_constraintStart_toStartOf="@+id/spdIndicator"
-        app:layout_constraintTop_toTopOf="@+id/spdIndicator" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/spdIndicator"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:max="255"
+                app:indicatorColor="@color/spd_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/defIndicator"
+                app:layout_constraintTop_toBottomOf="@+id/defIndicator"
+                app:trackCornerRadius="20dp"
+                app:trackThickness="20dp" />
 
-    <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/expIndicator"
-        android:layout_width="0dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        android:max="1000"
-        app:indicatorColor="@color/exp_color"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/spdIndicator"
-        app:layout_constraintTop_toBottomOf="@+id/spdIndicator"
-        app:trackCornerRadius="20dp"
-        app:trackThickness="20dp" />
+            <TextView
+                android:id="@+id/spdValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90/255"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/spdIndicator"
+                app:layout_constraintEnd_toEndOf="@+id/spdIndicator"
+                app:layout_constraintStart_toStartOf="@+id/spdIndicator"
+                app:layout_constraintTop_toTopOf="@+id/spdIndicator" />
 
-    <TextView
-        android:id="@+id/expValue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="90/1000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/expIndicator"
-        app:layout_constraintEnd_toEndOf="@+id/expIndicator"
-        app:layout_constraintStart_toStartOf="@+id/expIndicator"
-        app:layout_constraintTop_toTopOf="@+id/expIndicator" />
+            <com.google.android.material.progressindicator.LinearProgressIndicator
+                android:id="@+id/expIndicator"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="24dp"
+                android:max="1000"
+                app:indicatorColor="@color/exp_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/spdIndicator"
+                app:layout_constraintTop_toBottomOf="@+id/spdIndicator"
+                app:trackCornerRadius="20dp"
+                app:trackThickness="20dp" />
 
-    <TextView
-        android:id="@+id/hpTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/hp_abbreviation"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/hpIndicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hpIndicator" />
+            <TextView
+                android:id="@+id/expValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="90/1000"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/expIndicator"
+                app:layout_constraintEnd_toEndOf="@+id/expIndicator"
+                app:layout_constraintStart_toStartOf="@+id/expIndicator"
+                app:layout_constraintTop_toTopOf="@+id/expIndicator" />
 
-    <TextView
-        android:id="@+id/atkTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/atk_abbreviation"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/atkIndicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/atkIndicator" />
+            <TextView
+                android:id="@+id/hpTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/hp_abbreviation"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/hpIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/hpIndicator" />
 
-    <TextView
-        android:id="@+id/defTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/def_abbreviation"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/defIndicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/defIndicator" />
+            <TextView
+                android:id="@+id/atkTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/atk_abbreviation"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/atkIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/atkIndicator" />
 
-    <TextView
-        android:id="@+id/spdTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/speed_abbreviation"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/spdIndicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/spdIndicator" />
+            <TextView
+                android:id="@+id/defTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/def_abbreviation"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/defIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/defIndicator" />
 
-    <TextView
-        android:id="@+id/expTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:text="@string/exp_abbreviation"
-        android:textAllCaps="true"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/expIndicator"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/expIndicator" />
+            <TextView
+                android:id="@+id/spdTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/speed_abbreviation"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/spdIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/spdIndicator" />
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/base_stats"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/heightTitle" />
+            <TextView
+                android:id="@+id/expTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="@string/exp_abbreviation"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/expIndicator"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/expIndicator" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/baseStatsText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/base_stats"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/heightTitle" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

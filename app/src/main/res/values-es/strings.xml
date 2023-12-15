@@ -28,4 +28,6 @@
     <string name="height">Altura</string>
     <string name="weight">Peso</string>
     <string name="base_stats">Estadísticas Base</string>
+    <string name="descending">Descendiente</string>
+    <string name="ascending">Ascendiente</string>
 </resources>
