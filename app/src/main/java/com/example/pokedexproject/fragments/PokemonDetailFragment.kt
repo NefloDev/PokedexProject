@@ -24,6 +24,7 @@ import com.example.pokedexproject.R
 import com.example.pokedexproject.databinding.FragmentPokemonDetailBinding
 import com.example.pokedexproject.databinding.PokemonTypeLabelBinding
 import com.example.pokedexproject.entities.pokemon.PokemonViewModel
+import java.util.Locale
 
 class PokemonDetailFragment : Fragment() {
     private lateinit var binding : FragmentPokemonDetailBinding
@@ -42,6 +43,12 @@ class PokemonDetailFragment : Fragment() {
 
         viewModel.selected().observe(viewLifecycleOwner
         ) { value ->
+
+            binding.detailName.text = value.name.replaceFirstChar {
+                if (it.isLowerCase()) it.titlecase(Locale.ROOT) else it.toString()
+            }
+
+            binding.detailId.text = "#${"%04d".format(value.id)}"
 
             Glide.with(requireActivity()).asBitmap().load(value.sprites.other.official_artwork.front_default)
                 .into(object : CustomTarget<Bitmap?>() {

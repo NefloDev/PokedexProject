@@ -4,6 +4,7 @@ import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.graphics.drawable.GradientDrawable
+import android.icu.text.ListFormatter.Width
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -117,6 +118,9 @@ class PokemonRecyclerFragment : Fragment() {
             holder.itemView.setOnClickListener{
                 viewModel.select(p.name)
                 navController.navigate(R.id.action_pokemonRecyclerFragment_to_pokemonDetailFragment)
+                binding.search.clearFocus()
+                binding.search.setQuery("", false)
+                binding.search.isIconified = true
             }
         }
 
