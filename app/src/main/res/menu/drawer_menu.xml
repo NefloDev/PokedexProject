@@ -23,33 +23,10 @@
             android:icon="@drawable/pokemonicon"
             android:title="@string/items" />
         <item
-            android:id="@+id/moveRecyclerFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/movementsicon"
-            android:title="@string/moves" />
-        <item
             android:id="@+id/pokemonRecyclerFragment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:icon="@drawable/pokedexicon"
             android:title="@string/pokemon" />
-    </group>
-    <group
-        android:id="@+id/user"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-        <item
-            android:id="@+id/bagFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/bagicon"
-            android:title="@string/bag" />
-        <item
-            android:id="@+id/teamFragment"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:icon="@drawable/pokemonteam"
-            android:title="@string/team" />
     </group>
 </menu>

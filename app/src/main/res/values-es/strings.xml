@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">PoyectoPokédex</string>
-    <string name="team">Equipo</string>
     <string name="abilities">Habilidades</string>
     <string name="berries">Bayas</string>
     <string name="items">Objetos</string>
     <string name="moves">Movimientos</string>
-    <string name="bag">Mochila</string>
     <string name="bug">bicho</string>
     <string name="dark">oscuro</string>
     <string name="dragon">dragón</string>

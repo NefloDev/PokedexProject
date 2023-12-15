@@ -1,81 +1,90 @@
 package com.example.pokedexproject.entities.pokemon
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.pokedexproject.entities.common.DataList
+import com.example.pokedexproject.entities.common.DataSimple
+import com.example.pokedexproject.entities.common.PokeApiClient
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class PokemonViewModel(application: Application) : AndroidViewModel(application) {
-    private val listManager = PokemonList()
-    val pokemonMutableLiveData = MutableLiveData<ArrayList<Pokemon>>()
+    private val listManager = PokeSimpleList()
+    val pokemonMutableLiveData = MutableLiveData<ArrayList<DataSimple>>()
     val selectedPokemon = MutableLiveData<Pokemon>()
-    private lateinit var pokemonList : List<String>
     private var apiClient = Retrofit.Builder()
         .baseUrl("https://pokeapi.co/api/v2/")
         .addConverterFactory(GsonConverterFactory.create())
         .build().create(PokeApiClient::class.java)
     private var thread : Job? = null
-    private var finished = false
-    private var i = 1
-    private fun initalize(){
+    private var i = 0
+    fun initalize(){
         apiClient = Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/v2/")
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(PokeApiClient::class.java)
-        finished = false
-        i = 1
-        listManager.reset(object : PokemonList.Callback {
-            override fun whenFinished(pokemon: ArrayList<Pokemon>) {
+        i = 0
+        listManager.reset(object : PokeSimpleList.Callback {
+            override fun whenFinished(pokemon: ArrayList<DataSimple>) {
                 pokemonMutableLiveData.value!!.clear()
             }
 
         })
     }
-    fun obtain() : MutableLiveData<ArrayList<Pokemon>>{
+    fun obtain() : MutableLiveData<ArrayList<DataSimple>>{
         return pokemonMutableLiveData
     }
 
     fun startSearch(){
-        thread = GlobalScope.launch{
-            val countResponse = apiClient.getPokemonList().execute()
-            if(countResponse.isSuccessful && countResponse.body()!=null){
-                while(i <= countResponse.body()!!.count && !finished){
-                    val response = apiClient.getPokemon(i).execute()
-                    if (response.isSuccessful && response.body() != null){
-                        listManager.insert(response.body()!!, object : PokemonList.Callback {
-                            override fun whenFinished(pokemon: ArrayList<Pokemon>) {
-                                pokemonMutableLiveData.postValue(pokemon)
+        apiClient.getPokemonList(1).enqueue(object : Callback<DataList>{
+            override fun onResponse(call: Call<DataList>, response: Response<DataList>) {
+                if(response.isSuccessful && response.body()!=null){
+                    apiClient.getPokemonList(response.body()!!.count).enqueue(object : Callback<DataList>{
+                        override fun onResponse(call: Call<DataList>, response: Response<DataList>) {
+                            if (response.isSuccessful && response.body()!=null){
+                                while (i < response.body()!!.count){
+                                    val data = response.body()!!.results[i]
+                                    listManager.insert(data, object : PokeSimpleList.Callback{
+                                        override fun whenFinished(pokemon: ArrayList<DataSimple>) {
+                                            pokemonMutableLiveData.value = pokemon
+                                        }
+                                    })
+                                    i++;
+                                }
                             }
-                        })
-                        i++
-                    }else{
-                        finished = true
-                    }
+                        }
+                        override fun onFailure(call: Call<DataList>, t: Throwable) { Log.ERROR }
+                    })
                 }
             }
-        }
-        thread!!.start()
+            override fun onFailure(call: Call<DataList>, t: Throwable) { Log.ERROR }
+        })
     }
 
-    fun stopThread(){
-        runBlocking {
-            finished = true
-            thread!!.cancelAndJoin()
-        }
-        initalize()
-    }
+    fun select(name : String){
+        apiClient.getPokemon(name).enqueue(object : Callback<Pokemon>{
+            override fun onResponse(call: Call<Pokemon>, response: Response<Pokemon>) {
+                if (response.isSuccessful && response.body()!=null){
+                    selectedPokemon.postValue(response.body()!!);
+                }
+            }
+            override fun onFailure(call: Call<Pokemon>, t: Throwable) {
+                Log.ERROR
+            }
 
-    fun select(element : Pokemon){
-        selectedPokemon.value = element;
+        })
     }
     fun selected() : MutableLiveData<Pokemon>{
         return selectedPokemon;
     }
-
 }

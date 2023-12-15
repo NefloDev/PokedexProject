@@ -1,19 +1,24 @@
 package com.example.pokedexproject.fragments
 
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.drawable.Drawable
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.Target
 import com.example.pokedexproject.R
 import com.example.pokedexproject.databinding.FragmentPokemonDetailBinding
@@ -35,9 +40,19 @@ class PokemonDetailFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity())[PokemonViewModel::class.java]
         var adapter : PokemonTypeLabelAdapter
 
-        viewModel.selectedPokemon.observe(viewLifecycleOwner
+        viewModel.selected().observe(viewLifecycleOwner
         ) { value ->
-            binding.cardLayout.backgroundTintList = ColorStateList.valueOf(value.bg)
+
+            Glide.with(requireActivity()).asBitmap().load(value.sprites.other.official_artwork.front_default)
+                .into(object : CustomTarget<Bitmap?>() {
+                    override fun onResourceReady(
+                        bitmap: Bitmap, transition: com.bumptech.glide.request.transition.Transition<in Bitmap?>?) {
+                        Palette.Builder(bitmap).generate { it?.let { palette ->
+                            binding.cardLayout.backgroundTintList = ColorStateList.valueOf(palette.getDominantColor(Color.WHITE))
+                        } }
+                    }
+                    override fun onLoadCleared(placeholder: Drawable?) {}
+                })
 
             adapter = PokemonTypeLabelAdapter(value.types.map { t -> t.type.name })
             binding.pokemonTypeRecycler.adapter = adapter
