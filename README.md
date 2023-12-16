@@ -14,17 +14,17 @@ This app uses:
 - Navigation Controller to navigate through fragments in the Drawer Layout accessible from the orange button at the left
 
 ## Pokemon List
-![pokemon_list](https://github.com/NefloArt/PokedexProject/tree/main/screenshots/PokemonList.jpg)
+![pokemon_list](https://raw.githubusercontent.com/NefloArt/PokedexProject/main/screenshots/PokemonList.jpg)
 ## Pokemon List Filtered
-![pokemon_list_filtered](https://github.com/NefloArt/PokedexProject/tree/main/screenshots/PokemonListFiltered.jpg)
+![pokemon_list_filtered](https://raw.githubusercontent.com/NefloArt/PokedexProject/main/screenshots/PokemonListFiltered.jpg)
 ## Pokemon Detail
-![pokemon_detail](https://github.com/NefloArt/PokedexProject/tree/main/screenshots/PokemonDetail.jpg)
+![pokemon_detail](https://raw.githubusercontent.com/NefloArt/PokedexProject/main/screenshots/PokemonDetail.jpg)
 ## Item List
-![item_list](https://github.com/NefloArt/PokedexProject/tree/main/screenshots/ItemList.jpg)
+![item_list](https://raw.githubusercontent.com/NefloArt/PokedexProject/main/screenshots/ItemList.jpg)
 ## Item List Filtered
-![item_list_filtered](https://github.com/NefloArt/PokedexProject/tree/main/screenshots/ItemListFiltered.jpg)
+![item_list_filtered](https://raw.githubusercontent.com/NefloArt/PokedexProject/main/screenshots/ItemListFiltered.jpg)
 ## Item Detail
-![item_detail](https://github.com/NefloArt/PokedexProject/tree/main/screenshots/ItemDetail.jpg)
+![item_detail](https://raw.githubusercontent.com/NefloArt/PokedexProject/main/screenshots/ItemDetail.jpg)
 
 ## Author
 [NefloArt](https://github.com/NefloArt)
